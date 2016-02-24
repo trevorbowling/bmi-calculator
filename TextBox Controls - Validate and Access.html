@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--
+	***** TEXTBOX Manipulation *****
+	-->
+	<style type="text/css">
+		.flag  {color: red;}
+	</style>
+
+	<script type="text/javascript">
+		function formAccess()
+		{
+			//This function demonstrates how to access the textbox values via Javascript code
+			var msg = "<h1> You Entered: </h1>";
+			
+			msg= msg + "Name: " + document.getElementById("txtName").value + "<br />";
+			msg = msg + "GPA: " + document.getElementById("txtGPA").value + "<br />";;
+			msg = msg + "Age: " + document.getElementById("txtAge").value + "<br />";;
+			msg = msg + "Email: " + document.getElementById("txtEmail").value;
+			document.writeln(msg);
+			
+			return true;  //true means submit the form
+			
+		}
+	</script>
+</head>
+<body>
+	<h3> Add Player </h3>
+	<form id="frmAddPlayer" action="" method="post" onsubmit="formAccess();">
+		<table cellpadding="3">
+			<tr>
+				<td> <strong>Name: </strong></td>
+				<td> <input type="text" id="txtName" required="true" /> </td>
+				
+			</tr>
+			<tr>
+				<td> <strong>GPA (0.0 to 4.0): </strong> </td>
+				<td> <input type="number" id="txtGPA" min="0.0" max="4.0" step="0.1" required="true" /> </td>
+				
+			</tr>
+			<tr>
+				<td> <strong>Age (>= 15): </strong></td>
+				<td> <input type="number" id="txtAge" min="15" step="1" required="true" /> </td>
+				
+			</tr>
+			<tr>
+				<td> <strong>Email  (e.g., xxxx@xxxx.xxx): </strong></td>
+				<td> <input type="text" id="txtEmail" required="true" pattern=".+@.+\..{3,3}"
+				                 placeholder="Enter a valid email address" /> </td>
+				
+			</tr>
+		</table>
+		
+		<p>
+			<input type = "submit" value = "Submit" />
+			<input type = "reset" value = "Reset" />
+		</p>
+	</form>
+</body>
+

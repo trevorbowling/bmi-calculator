@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<style type="text/css">
+.auto-style1 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #800000;
+	text-align: center;
+}
+.auto-style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+.auto-style3 {
+	color: #F13CF1;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style4 {
+	color: #00FFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style5 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:small;
+}
+.auto-style6 {
+	background-color: #000000;
+}
+.auto-style9 {
+	text-align: left;
+	color: #000080;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style12 {
+	text-align: left;
+	color: #000080;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+.auto-style13 {
+	font-size: small;
+}
+.auto-style14 {
+	color: #0000FF;
+}
+</style>
+<!=======================>
+<!--- Javascript Area --->
+<!=======================>
+<script type="text/javascript">
+	function computeBMI()
+	{
+		//This function computes the BMI using the following formula
+		//BMI = WEIGHT / [HEIGHT] ^ 2 * 703 (a constant)
+		//Notice that you must use only total "inches" for the height and "pounds" for the weight. 
+		//So, the feet portion of the height must be converted to inches
+		//Display the final results in the read-only textboxes
+	
+		var weight = document.frmBMI.txtWeight.value;
+		var heightIn = document.frmBMI.txtHeightIn.value;
+		var heightFt = document.frmBMI.txtHeightIn.value;
+		
+		var height = heightIn + (heightFt * 12) ;
+		
+		var BMI = weight/(height) ^ 2 * 703;
+		
+		document.frmBMI.txtBMI.value = BMI;
+		
+		if (BMI < 18.5) { 
+		document.frmBMI.txtWeightStatus.value = "Underweight"
+		}
+		
+		if (BMI > 18.5 && BMI <= 24.9 ) {
+		document.frmBMI.txtWeightStatus.value = "Normal weight"
+		}
+		
+		if (BMI > 24.9 && BMI <= 29.9) {
+		document.frmBMI.txtWeightStatus.value = "Overweight"
+		}
+		
+		if (BMI > 29.9) {
+		document.frmBMI.txtWeightStatus.value = "Obese"
+		}
+		
+		else {
+		alert("Error");
+		}
+		
+}
+
+</script>
+
+</head>
+
+<body>
+
+<table style="width: 80%">
+	<tr>
+		<td rowspan="2">
+		<img alt="Image of healthy heart" height="121" src="HealthyHeart.GIF" width="200" /></td>
+		<td>
+		<h2 class="auto-style1">Calculate Your Body Mass Index (BMI)</h2>
+		</td>
+	</tr>
+	<tr>
+		<td class="auto-style2"><strong>Body mass index (BMI) is a measure of 
+		body fat based on height and weight that applies to adult men and women.
+		</strong></td>
+	</tr>
+</table>
+
+<form method="post" name="frmBMI" id="frmBMI" onsubmit="return computeBMI();">
+<table style="width: 90%; height: 139px">
+	<tr>
+		<td class="auto-style6" style="width: 261px">
+		<p class="auto-style3">BMI vs. Weight Status: </p>
+		<ul>
+			<li class="auto-style4">Underweight: &lt;18.5</li>
+			<li class="auto-style4">Normal weight: 18.5–24.9 </li>
+			<li class="auto-style4">Overweight: 25–29.9 </li>
+			<li class="auto-style4">Obese: 30 or greater </li>
+		</ul>
+		</td>
+		<td class="auto-style5" style="width: 263px">
+			<ul>
+				<li> Enter your <b>Height</b> in Feet portion. </li>
+				<li> Enter your <b>Height</b> in Inch portion. </li>
+				<li> Enter your <b>Weight</b> in pounds. </li>
+				<li> Press the <b>Compute BMI</b> button. </li>
+				<li> Verify Your <b>BMI Status</b> using the table on the left. </li>
+			</ul>
+		</td>
+		<td class="auto-style5" style="width: 380px" style="background:#99FFCC">
+			<table>
+			
+			<tr><td colspan="2"><strong>Enter HEIGHT:</strong>: </td></tr>
+			<tr>
+			<td>Feet (3 to 7): </td>
+			<td><input type="number" name="txtHeightFt" id="txtHeightFt" 
+			                                       min="3" max="7" step="1" required="true"/>  </td>
+			</tr>
+			<tr>
+			<td>Inches (0 to 11): </td>
+			<td> <input type="number" name="txtHeightIn"  id="txtHeightIn" min="0" max="11" step="1" 
+                             required="true" />  </td>			
+			</tr>
+			
+			<tr><td>&nbsp;</td></tr>
+			<tr><td colspan="2"><strong>Enter WEIGHT</strong>: </td></tr>
+			<br />
+			<tr>
+			<td>Pounds (> 1.0): </td>
+			<td> <input type="number" name="txtWeight"  id="txtWeight" min="1" step="0.1" required="true"/>  </td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr><td colspan="2"><strong>RESULTS:</strong>:</td></tr>
+			<tr>
+			<td><span class="auto-style14"><strong>Your BMI:</strong></span> </td>
+			<td><input name="txtBMI" style="width: 56px; background:#FFFF99"" type="text" readonly="readonly" /> </td>
+			</tr>
+			<tr>			
+			<td><span class="auto-style14"><strong>Your Weight Status:</strong></span> </td>
+			<td><input name="txtWeightStatus" style="width: 80px; background:#FFFF99"" type="text" readonly="readonly" /></td>
+		     </tr>
+			 </table>
+			 
+			 <br /><br />
+			 <input type="submit" name="btnComputeBMI" value="Compute BMI" onclick="computeBMI" /> 
+			<input type="reset" name="btnReset" value="Clear" /><br /> <br /> 
+
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+
+</html>
